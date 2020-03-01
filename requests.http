@@ -1,0 +1,12 @@
+POST http://localhost:8080/transfer
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "from": 1,
+  "to": 2,
+  "amount": 1
+}
+
+###

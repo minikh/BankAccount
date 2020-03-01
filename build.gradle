@@ -4,6 +4,8 @@ version '0.0.1'
 buildscript {
     ext {
         kotlinVersion = '1.3.61'
+        ktorVersion = '1.3.1'
+        exposedVersion = '0.21.1'
     }
     repositories {
         mavenLocal()
@@ -25,21 +27,36 @@ apply plugin: 'idea'
 apply plugin: 'application'
 apply plugin: 'kotlin'
 
-sourceCompatibility = 1.11
+sourceCompatibility = 11
 
-mainClassName = ''
+mainClassName = 'test.bank.ServerKt'
 
 repositories {
     mavenLocal()
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
-    implementation 'org.jetbrains:annotations:15.0'
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.6.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-}
+    implementation "io.ktor:ktor-server-core:$ktorVersion"
+    implementation "io.ktor:ktor-server-netty:$ktorVersion"
+    implementation "io.ktor:ktor-client-core:$ktorVersion"
+    implementation "io.ktor:ktor-client-cio:$ktorVersion"
+    implementation "io.ktor:ktor-jackson:$ktorVersion"
+    implementation "ch.qos.logback:logback-classic:1.2.3"
 
+    implementation "org.jetbrains.exposed:exposed-core:$exposedVersion"
+    implementation "org.jetbrains.exposed:exposed-dao:$exposedVersion"
+    implementation "org.jetbrains.exposed:exposed-jdbc:$exposedVersion"
+
+    implementation "com.h2database:h2:1.4.200"
+
+    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.6.0'
+    testCompile("io.ktor:ktor-server-test-host:$ktorVersion")
+//    testImplementation("com.nhaarman.mockitokotlin2", "mockito-kotlin", "2.2.0")
+}
 
 test {
     useJUnitPlatform()
