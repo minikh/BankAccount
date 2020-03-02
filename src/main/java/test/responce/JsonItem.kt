@@ -2,12 +2,11 @@ package test.responce
 
 import java.util.*
 
-enum class ResponseStatus(val status: String) {
-    SUCCESS("success"),
-    ERROR("error"),
+enum class ResponseStatus {
+    SUCCESS,
+    ERROR,
 }
 
-//@JsonInclude(JsonInclude.Include.NON_NULL)
 data class JsonItemResponse<T>(
     val status: ResponseStatus,
     val message: String? = null,

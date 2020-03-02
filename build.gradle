@@ -29,7 +29,7 @@ apply plugin: 'kotlin'
 
 sourceCompatibility = 11
 
-mainClassName = 'test.bank.ServerKt'
+mainClassName = 'test.ServerKt'
 
 repositories {
     mavenLocal()
@@ -52,7 +52,9 @@ dependencies {
 
     implementation "com.h2database:h2:1.4.200"
 
-    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
+    implementation group: 'commons-cli', name: 'commons-cli', version: '1.4'
+
+    implementation group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.6.0'
     testCompile("io.ktor:ktor-server-test-host:$ktorVersion")
 //    testImplementation("com.nhaarman.mockitokotlin2", "mockito-kotlin", "2.2.0")

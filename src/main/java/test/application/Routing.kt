@@ -10,16 +10,12 @@ import io.ktor.features.DefaultHeaders
 import io.ktor.jackson.jackson
 import io.ktor.request.receive
 import io.ktor.response.respond
-import io.ktor.response.respondText
 import io.ktor.routing.Routing
 import io.ktor.routing.get
 import io.ktor.routing.post
-import org.jetbrains.exposed.sql.transactions.transaction
 import test.bank.account.MoneyTransaction
-import test.bank.account.UserAccount
-import test.bank.account.toDto
-import test.bank.account.transfer
-import test.responce.JsonItemBuilder
+import test.bank.account.MoneyTransferService.getAllUsers
+import test.bank.account.MoneyTransferService.transfer
 
 fun Application.bankApplicationServer() {
     install(DefaultHeaders)
@@ -30,15 +26,10 @@ fun Application.bankApplicationServer() {
         }
     }
     install(Routing) {
-        get("/") {
-            call.respondText("alive")
-        }
         get("/users") {
-            val users = transaction {
-                UserAccount.all().map { it.toDto() }
-            }
-            call.respond(JsonItemBuilder.success(users))
+            call.respond(getAllUsers())
         }
+
         post("/transfer") {
             val body = call.receive<MoneyTransaction>()
             call.respond(transfer(body))
