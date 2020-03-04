@@ -15,3 +15,11 @@ Implicit requirements:
 2. There are no detailed requirements, use common sense.
 
 Please put your work on github or bitbucket.
+
+
+# build application
+./gradlew clean build
+
+#run
+tar -xvf build/distributions/money-transfer-0.0.1.tar -C ~/
+~/money-transfer-0.0.1/bin/money-transfer
