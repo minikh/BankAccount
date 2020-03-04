@@ -18,8 +18,16 @@ Please put your work on github or bitbucket.
 
 
 # build application
-./gradlew clean build
+    ./gradlew clean build
+
+#extract
+    tar -xvf build/distributions/money-transfer-0.0.1.tar -C ~/
 
 #run
-tar -xvf build/distributions/money-transfer-0.0.1.tar -C ~/
-~/money-transfer-0.0.1/bin/money-transfer
+    ~/money-transfer-0.0.1/bin/money-transfer
+    
+#get all users    
+    http://localhost:8080/users    
+
+#money transfer example here
+    requests.http
