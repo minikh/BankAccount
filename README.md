@@ -35,4 +35,4 @@ Please put your work on github or bitbucket.
 
 #another way
     docker build -t money-transfer .
-    docker run -ti -p 8080:8080 --name money-transfer  money-transfer:latest
+    docker run -ti -p 8080:8080 --rm  money-transfer:latest
