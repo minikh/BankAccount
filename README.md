@@ -31,3 +31,8 @@ Please put your work on github or bitbucket.
 
 #money transfer example here
     requests.http
+
+
+#another way
+    docker build -t money-transfer .
+    docker run -ti -p 8080:8080 --name money-transfer  money-transfer:latest
